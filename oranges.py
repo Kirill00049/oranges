@@ -9,12 +9,20 @@ getStockSell = "https://datsorange.devteam.games/sellStock"
 getStockBuy = "https://datsorange.devteam.games/buyStock"
 getStockAll = "https://datsorange.devteam.games/getSymbols"
 bestBuy = "https://datsorange.devteam.games/BestPriceBuy"
+removeBid = "https://datsorange.devteam.games/RemoveBid"
 
-buyBestPrice = {"symbolId": 2, "quantity": 10}
+allSymbols = {}
 
-response = requests.post(bestBuy, headers=headers, json=buyBestPrice)
+buyBestPrice = {"symbolId": 7, "quantity": 10}
 
-print(response.json())
+removeBid = {"bidId": 16}
+
+response = requests.get(getStockAll, headers=headers, json=buyBestPrice)
+
+for i in response.json():
+    allSymbols.update({i["ticker"][8:]: i["id"]})
+
+print(allSymbols)
 
 # Press the green button in the gutter to run the script.
 
