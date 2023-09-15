@@ -13,16 +13,8 @@ removeBid = "https://datsorange.devteam.games/RemoveBid"
 limitPriceBuy = "https://datsorange.devteam.games/LimitPriceBuy"
 limitPriceSell = "https://datsorange.devteam.games/LimitPriceSell"
 
-allSymbols = {}
-
-buyBestPrice = {"symbolId": 7, "quantity": 10}
-
-removeBid = {"bidId": 16}
-
-response = requests.get(getStockAll, headers=headers)
-print(response.json())
-
-# Словарик
-for i in response.json():
-    allSymbols.update({i["ticker"][8:]: i["id"]})
-print(allSymbols)
+# Продаем
+response3 = requests.post(limitPriceSell, headers=headers, json={
+"symbolId": 498,
+"price": 1000,
+"quantity": 5})
