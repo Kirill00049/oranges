@@ -1,0 +1,2 @@
+mem = "Arsenii"
+print(mem)
